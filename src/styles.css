@@ -1,0 +1,454 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+@font-face {
+font-family: "Desyanti";
+src: url("/src/assets/fonts/Desyanti.ttf") format("truetype");
+font-weight: normal;
+font-style: normal;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Kajal & Arul — Beach Wedding Design System
+ * All colors in oklch. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Ocean palette */
+  --color-ocean: var(--ocean);
+  --color-navy: var(--navy);
+  --color-turquoise: var(--turquoise);
+  --color-sky: var(--sky);
+  --color-pearl: var(--pearl);
+  --color-sand: var(--sand);
+  --color-gold: var(--gold);
+  --color-shell: var(--shell);
+
+  --font-display: "Desyanti", cursive;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Poppins", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 1.25rem;
+
+  --ocean: oklch(0.6 0.219 254.6); /* #0077FF */
+  --navy: oklch(0.31 0.099 254.5); /* #003366 */
+  --turquoise: oklch(0.78 0.128 189.5); /* #00CFC8 */
+  --sky: oklch(0.9 0.075 217); /* #9EE7FF */
+  --pearl: oklch(0.978 0 0);
+  --sand: oklch(0.93 0.043 91.5); /* #F5E6C8 */
+  --gold: oklch(0.86 0.132 87); /* #FFD166 */
+  --shell: oklch(0.96 0.012 80);
+
+  --background: oklch(0.985 0.006 220);
+  --foreground: oklch(0.31 0.099 254.5);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.31 0.099 254.5);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.31 0.099 254.5);
+  --primary: oklch(0.6 0.219 254.6);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.95 0.03 210);
+  --secondary-foreground: oklch(0.31 0.099 254.5);
+  --muted: oklch(0.96 0.014 220);
+  --muted-foreground: oklch(0.53 0.048 250);
+  --accent: oklch(0.86 0.132 87);
+  --accent-foreground: oklch(0.31 0.099 254.5);
+  --destructive: oklch(0.58 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.9 0.02 230);
+  --input: oklch(0.92 0.02 230);
+  --ring: oklch(0.78 0.128 189.5);
+
+  /* Gradients */
+  --gradient-dawn: linear-gradient(180deg, oklch(0.95 0.05 230), oklch(0.93 0.043 91.5));
+  --gradient-sunset: linear-gradient(
+    180deg,
+    oklch(0.86 0.132 87) 0%,
+    oklch(0.8 0.12 45) 45%,
+    oklch(0.62 0.14 260) 100%
+  );
+  --gradient-night: linear-gradient(180deg, oklch(0.24 0.08 258) 0%, oklch(0.16 0.06 260) 100%);
+  --gradient-ocean: linear-gradient(
+    135deg,
+    oklch(0.6 0.219 254.6),
+    oklch(0.78 0.128 189.5) 60%,
+    oklch(0.9 0.075 217)
+  );
+  --gradient-gold: linear-gradient(100deg, oklch(0.86 0.132 87), oklch(0.94 0.06 95));
+  --gradient-aurora: radial-gradient(
+      60% 50% at 20% 20%,
+      color-mix(in oklab, var(--turquoise) 45%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      55% 45% at 85% 15%,
+      color-mix(in oklab, var(--gold) 40%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      70% 60% at 50% 90%,
+      color-mix(in oklab, var(--ocean) 40%, transparent),
+      transparent 75%
+    );
+
+  /* Glass + shadows */
+  --glass-bg: color-mix(in oklab, white 55%, transparent);
+  --glass-border: color-mix(in oklab, white 70%, transparent);
+  --shadow-float: 0 24px 70px -28px color-mix(in oklab, var(--navy) 55%, transparent);
+  --shadow-glow: 0 0 44px color-mix(in oklab, var(--turquoise) 55%, transparent);
+  --shadow-gold: 0 0 40px color-mix(in oklab, var(--gold) 60%, transparent);
+
+  --ease-elastic: cubic-bezier(0.22, 1.4, 0.36, 1);
+  --ease-silk: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark {
+  --background: oklch(0.18 0.06 260);
+  --foreground: oklch(0.96 0.01 230);
+  --card: oklch(0.24 0.07 258);
+  --card-foreground: oklch(0.96 0.01 230);
+  --popover: oklch(0.24 0.07 258);
+  --popover-foreground: oklch(0.96 0.01 230);
+  --primary: oklch(0.78 0.128 189.5);
+  --primary-foreground: oklch(0.18 0.06 260);
+  --secondary: oklch(0.3 0.07 258);
+  --secondary-foreground: oklch(0.96 0.01 230);
+  --muted: oklch(0.3 0.07 258);
+  --muted-foreground: oklch(0.75 0.03 230);
+  --accent: oklch(0.86 0.132 87);
+  --accent-foreground: oklch(0.18 0.06 260);
+  --border: oklch(1 0 0 / 14%);
+  --input: oklch(1 0 0 / 18%);
+  --glass-bg: color-mix(in oklab, white 10%, transparent);
+  --glass-border: color-mix(in oklab, white 22%, transparent);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--turquoise) 40%, transparent);
+  }
+
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
+/* ---------- Utilities ---------- */
+
+@utility font-script {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+@utility font-elegant {
+  font-family: var(--font-serif);
+}
+
+@utility text-gradient-ocean {
+  background-image: var(--gradient-ocean);
+  background-clip: text;
+  color: transparent;
+}
+
+@utility text-gradient-gold {
+  background-image: var(--gradient-gold);
+  background-clip: text;
+  color: transparent;
+}
+
+@utility glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(22px) saturate(150%);
+  box-shadow: var(--shadow-float);
+}
+
+@utility glass-dark {
+  background: color-mix(in oklab, var(--navy) 32%, transparent);
+  border: 1px solid color-mix(in oklab, white 20%, transparent);
+  backdrop-filter: blur(22px) saturate(150%);
+  box-shadow: var(--shadow-float);
+}
+
+@utility aurora {
+  background-image: var(--gradient-aurora);
+  filter: blur(40px);
+}
+
+@utility card-tilt {
+  transition:
+    transform 0.6s var(--ease-silk),
+    box-shadow 0.6s var(--ease-silk);
+  transform-style: preserve-3d;
+
+  &:hover {
+    transform: translateY(-10px) rotateX(4deg) rotateY(-4deg) scale(1.015);
+    box-shadow:
+      var(--shadow-float),
+      var(--shadow-glow);
+  }
+}
+
+@utility zoom-media {
+  overflow: hidden;
+
+  & img {
+    transition:
+      transform 1.2s var(--ease-silk),
+      filter 1.2s var(--ease-silk);
+  }
+
+  &:hover img {
+    transform: scale(1.09);
+    filter: saturate(1.15) contrast(1.05);
+  }
+}
+
+@utility track-hover {
+  transition:
+    letter-spacing 0.6s var(--ease-silk),
+    color 0.6s var(--ease-silk);
+
+  &:hover {
+    letter-spacing: 0.28em;
+  }
+}
+
+@utility sparkle {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    background: radial-gradient(
+      circle at 30% 30%,
+      color-mix(in oklab, white 85%, transparent),
+      transparent 45%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+
+  &:hover::after {
+    opacity: 0.8;
+  }
+}
+
+@utility lens-flare {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      110deg,
+      transparent 35%,
+      color-mix(in oklab, white 55%, transparent) 48%,
+      transparent 60%
+    );
+    transform: translateX(-120%);
+    transition: transform 1s var(--ease-silk);
+    pointer-events: none;
+  }
+
+  &:hover::before {
+    transform: translateX(120%);
+  }
+}
+
+/* ---------- Keyframes ---------- */
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(6deg);
+  }
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) scale(0.6);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.65;
+  }
+  100% {
+    transform: translateY(-105vh) scale(1.1);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--turquoise) 45%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 22px transparent;
+  }
+}
+
+@keyframes ripple-out {
+  0% {
+    transform: scale(0);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes fade-print {
+  0% {
+    opacity: 0.45;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes gull {
+  0% {
+    transform: translate3d(-10vw, 0, 0) scaleX(1);
+  }
+  100% {
+    transform: translate3d(110vw, -6vh, 0) scaleX(1);
+  }
+}
+
+@keyframes flap {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.35);
+  }
+}
+
+@keyframes heart-beat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.16);
+  }
+  55% {
+    transform: scale(0.98);
+  }
+}
+
+@keyframes drift-x {
+  0% {
+    transform: translateX(-6%);
+  }
+  100% {
+    transform: translateX(6%);
+  }
+}
+
+.animate-float-soft {
+  animation: float-soft 7s ease-in-out infinite;
+}
+.animate-sway {
+  animation: sway 6s ease-in-out infinite;
+}
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 5s linear infinite;
+}
+.animate-pulse-glow {
+  animation: pulse-glow 2.8s ease-out infinite;
+}
+.animate-heart {
+  animation: heart-beat 2.4s ease-in-out infinite;
+}
+.animate-drift {
+  animation: drift-x 18s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
